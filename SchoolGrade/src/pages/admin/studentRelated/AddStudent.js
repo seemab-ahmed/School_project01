@@ -5,7 +5,7 @@ import { registerUser } from '../../../redux/userRelated/userHandle';
 import Popup from '../../../components/Popup';
 import { underControl } from '../../../redux/userRelated/userSlice';
 import { getAllSclasses } from '../../../redux/sclassRelated/sclassHandle';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material'; 
 
 const AddStudent = ({ situation }) => {
     const dispatch = useDispatch()

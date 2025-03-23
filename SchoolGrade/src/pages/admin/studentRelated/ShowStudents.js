@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import { getAllStudents } from '../../../redux/studentRelated/studentHandle';
-import { deleteUser } from '../../../redux/userRelated/userHandle';
 import {
     Paper, Box, IconButton
 } from '@mui/material';
@@ -78,15 +77,10 @@ const ShowStudents = () => {
 
         const handleClick = () => {
             if (selectedIndex === 0) {
-                handleAttendance();
-            } else if (selectedIndex === 1) {
                 handleMarks();
-            }
+            } 
         };
 
-        const handleAttendance = () => {
-            navigate("/Admin/students/student/attendance/" + row.id)
-        }
         const handleMarks = () => {
             navigate("/Admin/students/student/marks/" + row.id)
         };

@@ -41,6 +41,8 @@ import AddClass from './classRelated/AddClass';
 import ClassDetails from './classRelated/ClassDetails';
 import ShowClasses from './classRelated/ShowClasses';
 import AccountMenu from '../../components/AccountMenu';
+import AddParent from './parentRelated/AddParent';
+import ShowParents from './parentRelated/ShowParents';
 
 const AdminDashboard = () => {
     const [open, setOpen] = useState(false);
@@ -125,6 +127,10 @@ const AdminDashboard = () => {
                         <Route path="/Admin/students/student/:id" element={<ViewStudent />} />
                         <Route path="/Admin/students/student/attendance/:id" element={<StudentAttendance situation="Student" />} />
                         <Route path="/Admin/students/student/marks/:id" element={<StudentExamMarks situation="Student" />} />
+
+                        {/* Parent */}
+                        <Route path="/Admin/addparents" element={<AddParent situation="Parent" />} />
+                        <Route path="/Admin/parents" element={<ShowParents />} />
 
                         {/* Teacher */}
                         <Route path="/Admin/teachers" element={<ShowTeachers />} />

@@ -8,6 +8,7 @@ import TeacherDashboard from './pages/teacher/TeacherDashboard';
 import LoginPage from './pages/LoginPage';
 import AdminRegisterPage from './pages/admin/AdminRegisterPage';
 import ChooseUser from './pages/ChooseUser';
+import ParentDashboard from './pages/parent/ParentDashboard';
 
 const App = () => {
   const { currentRole } = useSelector(state => state.user);
@@ -39,6 +40,12 @@ const App = () => {
       {currentRole === "Student" &&
         <>
           <StudentDashboard />
+        </>
+      }
+
+{currentRole === "Parent" &&
+        <>
+          <ParentDashboard />
         </>
       }
 

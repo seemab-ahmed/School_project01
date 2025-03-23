@@ -12,10 +12,10 @@ const SeeNotice = () => {
 
     useEffect(() => {
         if (currentRole === "Admin") {
-            dispatch(getAllNotices(currentUser._id, "Notice"));
+            dispatch(getAllNotices(currentUser?._id, "Notice"));
         }
         else {
-            dispatch(getAllNotices(currentUser.school._id, "Notice"));
+            dispatch(getAllNotices(currentUser?.school?._id, "Notice"));
         }
     }, [dispatch]);
 

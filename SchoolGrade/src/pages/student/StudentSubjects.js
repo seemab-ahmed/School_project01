@@ -14,7 +14,7 @@ import { StyledTableCell, StyledTableRow } from '../../components/styles';
 const StudentSubjects = () => {
 
     const dispatch = useDispatch();
-    const { subjectsList, sclassDetails } = useSelector((state) => state.sclass);
+    const { subjectsList } = useSelector((state) => state.sclass);
     const { userDetails, currentUser, loading, response, error } = useSelector((state) => state.user);
 
     useEffect(() => {
@@ -84,20 +84,29 @@ const StudentSubjects = () => {
                 <Typography variant="h4" align="center" gutterBottom>
                     Class Details
                 </Typography>
-                <Typography variant="h5" gutterBottom>
-                    You are currently in Class {sclassDetails && sclassDetails.sclassName}
-                </Typography>
-                <Typography variant="h6" gutterBottom>
-                    And these are the subjects:
-                </Typography>
-                {subjectsList &&
-                    subjectsList.map((subject, index) => (
-                        <div key={index}>
-                            <Typography variant="subtitle1">
-                                {subject.subName} ({subject.subCode})
-                            </Typography>
-                        </div>
-                    ))}
+
+                    <Table>
+                                            <TableHead>
+                                                <StyledTableRow>
+                                                    <StyledTableCell>Subject Name</StyledTableCell>
+                                                    <StyledTableCell> SUbject Code</StyledTableCell>
+                                                </StyledTableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {subjectsList.map((subject, index) => {
+                                                    if (!subject.subName || !subject.subCode) {
+                                                        return null;
+                                                    }
+                                                    return (
+                                                        <StyledTableRow key={index}>
+                                                            <StyledTableCell>{subject.subName}</StyledTableCell>
+                                                            <StyledTableCell>{subject.subCode}</StyledTableCell>
+                                                        </StyledTableRow>
+                                                    );
+                                                })}
+                                            </TableBody>
+                                        </Table>
+                
             </Container>
         );
     };

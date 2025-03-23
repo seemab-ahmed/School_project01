@@ -10,17 +10,14 @@ import {
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import StudentSideBar from './StudentSideBar';
+import ParentSideBar from './ParentSideBar';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import StudentHomePage from './StudentHomePage';
-import StudentProfile from './StudentProfile';
-import StudentSubjects from './StudentSubjects';
-import StudentComplain from './StudentComplain';
-import Logout from '../Logout'
+import Logout from '../Logout';
 import AccountMenu from '../../components/AccountMenu';
 import { AppBar, Drawer } from '../../components/styles';
+import ParentProgressReport from './ParentProgressReport';
 
-const StudentDashboard = () => {
+const ParentDashboard = () => {
     const [open, setOpen] = useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
@@ -51,7 +48,7 @@ const StudentDashboard = () => {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Student Dashboard
+                            Parent Dashboard
                         </Typography>
                         <AccountMenu />
                     </Toolbar>
@@ -64,30 +61,24 @@ const StudentDashboard = () => {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        <StudentSideBar />
+                        <ParentSideBar />
                     </List>
                 </Drawer>
                 <Box component="main" sx={styles.boxStyled}>
                     <Toolbar />
                     <Routes>
-                        <Route path="/" element={<StudentHomePage />} />
+                        <Route path="/" element={<ParentProgressReport />} />
                         <Route path='*' element={<Navigate to="/" />} />
-                        <Route path="/Student/dashboard" element={<StudentHomePage />} />
-                        <Route path="/Student/profile" element={<StudentProfile />} />
-
-                        <Route path="/Student/subjects" element={<StudentSubjects />} />
-                        {/* <Route path="/Student/attendance" element={<ViewStdAttendance />} /> */}
-                        <Route path="/Student/complain" element={<StudentComplain />} />
-
+                        <Route path="/parent/dashboard" element={<ParentProgressReport />} />
                         <Route path="/logout" element={<Logout />} />
                     </Routes>
                 </Box>
             </Box>
         </>
     );
-}
+};
 
-export default StudentDashboard
+export default ParentDashboard;
 
 const styles = {
     boxStyled: {
@@ -114,4 +105,4 @@ const styles = {
             display: 'none',
         },
     },
-}
+};
