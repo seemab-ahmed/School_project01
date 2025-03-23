@@ -20,13 +20,11 @@ const parentSchema = new mongoose.Schema({
     },
     children: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'student',
-        required: true
+        ref: 'student'
     }],
     school: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'admin',
-        required: true
+        ref: 'admin'
     },
     role: {
         type: String,

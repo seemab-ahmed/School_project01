@@ -3,6 +3,16 @@ const router = require('express').Router();
 // const { adminRegister, adminLogIn, deleteAdmin, getAdminDetail, updateAdmin } = require('../controllers/admin-controller.js');
 
 const { adminRegister, adminLogIn, getAdminDetail} = require('../controllers/admin-controller.js');
+const {
+    parentRegister,
+    parentLogIn,
+    getStudentsByParent,
+    getStudentProfile,
+    getStudentMarks,
+    downloadStudentResult,
+    updateParent,
+    getAllParents,
+} = require('../controllers/parent-controller.js');
 
 const { sclassCreate, sclassList, deleteSclass, deleteSclasses, getSclassDetail, getSclassStudents } = require('../controllers/class-controller.js');
 const { complainCreate, complainList } = require('../controllers/complain-controller.js');
@@ -115,5 +125,22 @@ router.get("/Subject/:id", getSubjectDetail)
 router.delete("/Subject/:id", deleteSubject)
 router.delete("/Subjects/:id", deleteSubjects)
 router.delete("/SubjectsClass/:id", deleteSubjectsByClass)
+
+
+
+// Parent Authentication
+router.post('/ParentReg', parentRegister);
+router.post('/ParentLogin', parentLogIn);
+
+// Parent-Student Management
+router.get('/Parents' , getAllParents);
+router.get('/Parent/Students/:parentId', getStudentsByParent);
+router.get('/Parent/StudentProfile/:studentId', getStudentProfile);
+router.get('/Parent/StudentMarks/:rollNum', getStudentMarks);
+router.get('/Parent/DownloadResult/:studentId', downloadStudentResult);
+
+// Parent Profile Management
+router.put('/Parent/:id', updateParent);
+
 
 module.exports = router;
